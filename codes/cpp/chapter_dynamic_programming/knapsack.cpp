@@ -33,7 +33,8 @@ int knapsackDFSMem(vector<int> &wgt, vector<int> &val, vector<vector<int>> &mem,
     }
     // 若超过背包容量，则只能选择不放入背包
     if (wgt[i - 1] > c) {
-        return knapsackDFSMem(wgt, val, mem, i - 1, c);
+        mem[i][c]=knapsackDFSMem(wgt, val, mem, i - 1, c);
+        return mem[i][c];
     }
     // 计算不放入和放入物品 i 的最大价值
     int no = knapsackDFSMem(wgt, val, mem, i - 1, c);
